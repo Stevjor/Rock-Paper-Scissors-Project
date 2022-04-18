@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "You won! Scissors beat paper.";
+        return "You Won! Scissors beat paper.";
     }
 
     else if (playerSelection == "paper" && computerSelection == "rock") {
@@ -41,7 +41,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     else if (computerSelection == "scissors" && playerSelection == "paper") {
-        return "You lose! Scissors beat paper.";
+        return "You Lose! Scissors beat paper.";
     }
 
     else if (computerSelection == "paper" && playerSelection == "rock") {
@@ -54,10 +54,38 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-let user = "Rock";
-console.log(`You chose ${user}.`);
-const computer = computerPlay();
-console.log(`Computer chose ${computer}.`);
+//This function calls the playRound function to play five rounds and the one with more scores
+//is the winner.
+function game() {
+    
+    let userScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        console.log("");
+        console.log(`Round ${i+1}`);
+        let userChoice = prompt(`Round ${i+1}`, "");
+        console.log(`You chose ${userChoice}.`);
 
-const game = playRound(user, computer);
-console.log(game);
+        let computerChoice = computerPlay();
+        console.log(`Computer chose ${computerChoice}.`);
+
+        //Verify who is the winner and give a score.
+        let winner = playRound(userChoice, computerChoice);
+
+        console.log(winner);
+
+        if (winner.includes("Won")) {
+            userScore += 1;
+        }
+
+        else if (winner.includes("Lose")){
+            computerScore += 1;
+        }
+    }
+    console.log("");
+    console.log(`You have ${userScore} score/s.`);
+    console.log(`Computer has ${computerScore} score/s.`);
+    if (userScore == computerScore) return "There is no winer. °_°";
+    if (userScore > computerScore) return "You won! °u°";
+    else return "You lose! °n°";
+}
