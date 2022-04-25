@@ -54,9 +54,20 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+//Have to add three buttons which will be the player's selection.
+//One click of a button, will be one round of the game. 
+//The player that reaches 5 points is the winner.
+//In the user interface, each round of the game will display
+//the winner of the round, or if there is a draw. This will be displayed
+//in the same position every round, so it has to be cleared by the time 
+//another round is played. Also, in the same position, the winner of the
+//game will be displayed. 
+//Also have to show in the user interface the points each player has after
+//each round, so it can be clearly seen who is the winner.
+
 //This function calls the playRound function to play five rounds and the one with more scores
 //is the winner.
-function game() {
+/*function game() {
     
     let userScore = 0;
     let computerScore = 0;
@@ -88,4 +99,4 @@ function game() {
     if (userScore == computerScore) return "There is no winer. °_°";
     if (userScore > computerScore) return "You won! °u°";
     else return "You lose! °n°";
-}
+}*/
