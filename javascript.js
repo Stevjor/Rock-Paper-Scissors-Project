@@ -11,7 +11,7 @@ function computerPlay() {
     let i = Math.floor(Math.random() * (list.length));
     let name = list[i];
     
-    return name;
+    return name.toLowerCase();
 }
 
 //This function plays the game of rock papers scissors
@@ -54,90 +54,133 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-
-//Have to add three buttons which will be the player's selection.
-//One click of a button, will be one round of the game. 
-
-//One execution of the button will call the function playRound, and then count who got the point at the moment. 
-
-//While true
-//break loop (end the game) once a player reaches 5 points
-/**
-    let userScore = 0;
-    let computerScore = 0;
+function displayResults(userScore, computerScore, userChoice, computerChoice) {
     
+    let userPointsContainer = document.querySelector(".user_points");
+    let computerPointsContainer = document.querySelector(".computer_points");
+    let mainContainer = document.querySelector(".display_winner");
+    userPointsContainer.textContent = "";
+    computerPointsContainer.textContent = "";
+    mainContainer.textContent = "";
 
-        let userChoice = "";
-        let computerChoice = computerPlay();
+    let userh2Element = document.createElement("h2");
+    let computerh2Element = document.createElement("h2");
 
-        if (document.getElementById("rock").clicked == true) {
-            userChoice = "rock";
-        }
+    userh2Element.textContent = `You have ${userScore} points.`;
+    computerh2Element.textContent = `Computer has ${computerScore} points.`;
+    userh2Element.style.color = "red";
+    computerh2Element.style.color = "red";
+    userPointsContainer.appendChild(userh2Element);
+    computerPointsContainer.appendChild(computerh2Element);
 
-        else if (document.getElementById("paper").clicked == true) {
-            userChoice = "paper";
-        }
+    let userDecisionElement = document.createElement("h2");
+    let computerDecisionElement = document.createElement("h2");
+    let sayRoundWinnerElement = document.createElement("h2");
 
-        else if (document.getElementById("scissors").clicked == true) {
-            userChoice = "scissors";
-        }
+    userDecisionElement.textContent = `You chose ${userChoice}.`;
+    computerDecisionElement.textContent = `Computer chose ${computerChoice}.`;
+    userDecisionElement.style.color = "blue";
+    computerDecisionElement.style.color = "blue";
 
-        
-
-        let roundWinner = playRound(userChoice, computerChoice);
-        if (roundWinner.includes("Won")) {
-            userScore += 1;
-        }
-
-        else if (roundWinner.includes("Lose") != -1){
-            computerScore += 1;
-        }
-
-        let userPointsContainer = document.querySelector(".user_points");
-        let computerPointsContainer = document.querySelector(".computer_points");
-        let mainContainer = document.querySelector(".display_winner");
-
-        let userh2Element = document.createElement("h2");
-        let computerh2Element = document.createElement("h2");
-
-        userh2Element.textContent = `You have ${userScore} points.`;
-        computerh2Element.textContent = `Computer has ${computerScore} points.`;
-
-        userPointsContainer.appendChild(userh2Element);
-        computerPointsContainer.appendChild(computerh2Element);
-
-        let userDecisionElement = document.createElement("h2");
-        let computerDecisionElement = document.createElement("h2");
-        let sayRoundWinnerElement = document.createElement("h2");
-
-        mainContainer.appendChild(userDecisionElement);
-        mainContainer.appendChild(computerDecisionElement);
-        mainContainer.appendChild(sayRoundWinnerElement);
-
+    mainContainer.appendChild(userDecisionElement);
+    mainContainer.appendChild(computerDecisionElement);
     
+    let userDecisionElementText = userDecisionElement.textContent;
+    let computerDecisionElementText = computerDecisionElement.textContent;
 
-    let sayWinnerContainer = document.querySelector(".say_winner");
-    let sayWinnerElement = document.createrElement("h2");
-    if (userScore > computerScore) {
-        sayWinnerElement.textContent = `You won!`;
+    if (userDecisionElementText.includes("rock") && computerDecisionElementText.includes("scissors")) {
+        sayRoundWinnerElement.textContent = "You won! Rock beats scissors.";
+    }
+    else if (userDecisionElementText.includes("paper") && computerDecisionElementText.includes("rock")) {
+        sayRoundWinnerElement.textContent = "You won! Paper beats rock.";
+    }
+    else if (userDecisionElementText.includes("scissors") && computerDecisionElementText.includes("paper")) {
+        sayRoundWinnerElement.textContent = "You won! Scissors beat paper.";
+    }
+    else if (userDecisionElementText.includes("scissors") && computerDecisionElementText.includes("rock")) {
+        sayRoundWinnerElement.textContent = "You lost! Rock beats scissors.";
+    }
+    else if (userDecisionElementText.includes("rock") && computerDecisionElementText.includes("paper")) {
+        sayRoundWinnerElement.textContent = "You lost! Paper beats rock.";
+    }
+    else if (userDecisionElementText.includes("paper") && computerDecisionElementText.includes("scissors")) {
+        sayRoundWinnerElement.textContent = "You lost! Scissors beat paper.";
     }
     else {
-        sayWinnerElement.textContent = `You won!`;
+        sayRoundWinnerElement.textContent = "It's a tie!";
     }
+    sayRoundWinnerElement.style.color = "blue";
+    mainContainer.appendChild(sayRoundWinnerElement);
+}
 
-    sayWinnerContainer.appendChild(sayWinnerElement);
+const buttons = document.querySelectorAll('button');
 
+let computerScore = 0;
+let userScore = 0;
+let userChoice = "";
+let computerChoice = "";
 
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.id == "rock") {
+            userChoice = "rock";
+            computerChoice = computerPlay();
+            let roundWinner = playRound(userChoice, computerChoice);
+            if (roundWinner.includes("Won")) {
+                userScore += 1;
+            }
+        
+            else if (roundWinner.includes("Lose")){
+                computerScore += 1;
+            }
+            displayResults(userScore, computerScore, userChoice, computerChoice);
 
-*/
-//The player who reaches 5 points is the winner.
-//In the user interface, each round of the game will display
-//the winner of the round, or if there is a draw. This will be displayed
-//in the same position every round, so it has to be cleared by the time 
-//another round is played. Also, in the same position, the winner of the
-//game will be displayed. 
-//Also have to show in the user interface the points each player has after
-//each round, so it can be clearly seen who is the winner.
+        }
 
-//This function calls the playRound function to play five rounds and the one with more scores
-//is the winner.
+        if (button.id == "paper") {
+            userChoice = "paper";
+            computerChoice = computerPlay();
+            let roundWinner = playRound(userChoice, computerChoice);
+            if (roundWinner.includes("Won")) {
+                userScore += 1;
+            }
+        
+            else if (roundWinner.includes("Lose")){
+                computerScore += 1;
+            }
+            displayResults(userScore, computerScore, userChoice, computerChoice);
+
+        }
+
+        if (button.id == "scissors") {
+            userChoice = "scissors";
+            computerChoice = computerPlay();
+            let roundWinner = playRound(userChoice, computerChoice);
+            if (roundWinner.includes("Won")) {
+                userScore += 1;
+            }
+        
+            else if (roundWinner.includes("Lose")){
+                computerScore += 1;
+            }
+            displayResults(userScore, computerScore, userChoice, computerChoice);
+        }
+
+        if (userScore == 5) {
+            alert("You won!");
+            computerScore = 0;
+            userScore = 0;
+            userChoice = "";
+            computerChoice = "";
+
+        }
+        
+        else if (computerScore == 5) {
+            alert("You lost!");
+            computerScore = 0;
+            userScore = 0;
+            userChoice = "";
+            computerChoice = "";
+        }
+    });
+});
