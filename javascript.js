@@ -1,13 +1,7 @@
 //Gets a random word between rock, papers, scissors.
 function computerPlay() {
-    //Create a list of the names.
     const list = ["Rock", "Paper", "Scissors"];
 
-    //I have to get a random variable from my list of names.
-    //For this, I have to create a range from zero to the 
-    //length of the list minus 1. Then, I have to pick a random
-    //number between this range, and use it as an index for the 
-    //list, and in this way, I can choose a random variable.
     let i = Math.floor(Math.random() * (list.length));
     let name = list[i];
     
@@ -54,6 +48,9 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+//Takes the scores and choices of the players and compares them to tell who is the 
+//winner during each execution. Then, the results are added in a container to show
+//them in the screen.
 function displayResults(userScore, computerScore, userChoice, computerChoice) {
     
     let userPointsContainer = document.querySelector(".user_points");
@@ -120,6 +117,10 @@ let userScore = 0;
 let userChoice = "";
 let computerChoice = "";
 
+//This loop helps to keep count of the buttons pressed. Then, it will be possible 
+//to compare the results depending on the selection of the user and the computer by 
+//calling the displayResults function. At the end, the competitor who reaches 5 
+//points first is the winner.
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.id == "rock") {
@@ -174,7 +175,7 @@ buttons.forEach((button) => {
             computerChoice = "";
 
         }
-        
+
         else if (computerScore == 5) {
             alert("You lost!");
             computerScore = 0;
