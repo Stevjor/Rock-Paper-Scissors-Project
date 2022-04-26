@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>Rock papers scissors implementation</title>
         <link href="styles.css" rel="stylesheet">
-	    <script src="javascript.js"></script>
+	    <script src="javascript.js" defer></script>
     </head>
 
     <body>
@@ -13,9 +13,9 @@
 
         <div class="container">
             <div>
-                <button>Rock</button>
-                <button>Paper</button>
-                <button>Scissors</button>
+                <button class="sizeButtons" id="rock">Rock</button>
+                <button class="sizeButtons" id="paper">Paper</button>
+                <button class="sizeButtons" id="scissors">Scissors</button>
             </div>
 
             <div class="inputs_container">
@@ -41,5 +41,7 @@
             </div>
 
         </div>
+
+        <button class="startGameButton">Click to start the game</button>
     </body>
 </html>

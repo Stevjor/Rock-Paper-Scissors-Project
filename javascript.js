@@ -54,8 +54,82 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+
 //Have to add three buttons which will be the player's selection.
 //One click of a button, will be one round of the game. 
+
+//One execution of the button will call the function playRound, and then count who got the point at the moment. 
+
+//While true
+//break loop (end the game) once a player reaches 5 points
+/**
+    let userScore = 0;
+    let computerScore = 0;
+    
+
+        let userChoice = "";
+        let computerChoice = computerPlay();
+
+        if (document.getElementById("rock").clicked == true) {
+            userChoice = "rock";
+        }
+
+        else if (document.getElementById("paper").clicked == true) {
+            userChoice = "paper";
+        }
+
+        else if (document.getElementById("scissors").clicked == true) {
+            userChoice = "scissors";
+        }
+
+        
+
+        let roundWinner = playRound(userChoice, computerChoice);
+        if (roundWinner.includes("Won")) {
+            userScore += 1;
+        }
+
+        else if (roundWinner.includes("Lose") != -1){
+            computerScore += 1;
+        }
+
+        let userPointsContainer = document.querySelector(".user_points");
+        let computerPointsContainer = document.querySelector(".computer_points");
+        let mainContainer = document.querySelector(".display_winner");
+
+        let userh2Element = document.createElement("h2");
+        let computerh2Element = document.createElement("h2");
+
+        userh2Element.textContent = `You have ${userScore} points.`;
+        computerh2Element.textContent = `Computer has ${computerScore} points.`;
+
+        userPointsContainer.appendChild(userh2Element);
+        computerPointsContainer.appendChild(computerh2Element);
+
+        let userDecisionElement = document.createElement("h2");
+        let computerDecisionElement = document.createElement("h2");
+        let sayRoundWinnerElement = document.createElement("h2");
+
+        mainContainer.appendChild(userDecisionElement);
+        mainContainer.appendChild(computerDecisionElement);
+        mainContainer.appendChild(sayRoundWinnerElement);
+
+    
+
+    let sayWinnerContainer = document.querySelector(".say_winner");
+    let sayWinnerElement = document.createrElement("h2");
+    if (userScore > computerScore) {
+        sayWinnerElement.textContent = `You won!`;
+    }
+    else {
+        sayWinnerElement.textContent = `You won!`;
+    }
+
+    sayWinnerContainer.appendChild(sayWinnerElement);
+
+
+
+*/
 //The player who reaches 5 points is the winner.
 //In the user interface, each round of the game will display
 //the winner of the round, or if there is a draw. This will be displayed
@@ -67,36 +141,3 @@ function playRound(playerSelection, computerSelection) {
 
 //This function calls the playRound function to play five rounds and the one with more scores
 //is the winner.
-/*function game() {
-    
-    let userScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        console.log("");
-        console.log(`Round ${i+1}`);
-        let userChoice = prompt(`Round ${i+1}`, "");
-        console.log(`You chose ${userChoice}.`);
-
-        let computerChoice = computerPlay();
-        console.log(`Computer chose ${computerChoice}.`);
-
-        //Verify who is the winner and give a score.
-        let winner = playRound(userChoice, computerChoice);
-
-        console.log(winner);
-
-        if (winner.includes("Won")) {
-            userScore += 1;
-        }
-
-        else if (winner.includes("Lose")){
-            computerScore += 1;
-        }
-    }
-    console.log("");
-    console.log(`You have ${userScore} score/s.`);
-    console.log(`Computer has ${computerScore} score/s.`);
-    if (userScore == computerScore) return "There is no winer. °_°";
-    if (userScore > computerScore) return "You won! °u°";
-    else return "You lose! °n°";
-}*/
