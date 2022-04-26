@@ -56,7 +56,7 @@ function playRound(playerSelection, computerSelection) {
 
 //Have to add three buttons which will be the player's selection.
 //One click of a button, will be one round of the game. 
-//The player that reaches 5 points is the winner.
+//The player who reaches 5 points is the winner.
 //In the user interface, each round of the game will display
 //the winner of the round, or if there is a draw. This will be displayed
 //in the same position every round, so it has to be cleared by the time 
